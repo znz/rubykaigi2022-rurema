@@ -223,7 +223,7 @@ bitclust時代にシステムが関わる改善点がいくつかあったので
 - Coordinator is also wanted
 - Contact us on GitHub issues or `#rurema` channel of ruby-jp slack
   - <https://github.com/rurema/doctree/issues>
-  - <https://ruby-jp.github.io/>x
+  - <https://ruby-jp.github.io/>
 
 ## note
 
@@ -335,7 +335,6 @@ RDに存在するメソッドリストがないので、その代わりに何を
 - Clean up unused files, old files
   - ChangeLog, setup.rb, ...
 - Not sure if tools are still usable
-  - tools/bc-checkparams.rb, tools/forall-ruby.rb, ...
 - **Lack of usage documentation**
   - This is most important for contributors
 - Reproducible build
@@ -352,12 +351,19 @@ toolsのファイルがまだ使えるのかどうかはっきりしない、
 
 そして、再現可能なビルドも何らかの手段でもっと進めたいと思っています。
 
-# Medium term plans
+# Medium term plans with other software
 
 - Cooperation with RBS
   - e.g. Check signatures
 - Cooperation with IRB
   - Support to show rurema instead of rdoc
+
+## note
+
+中期目標としては、周辺ツールとの連携を進めたいと思っています。
+
+# Medium term plans for documents
+
 - Executable sample code using WASM
   - hanachin already tried <https://github.com/hanachin/bitclust/commit/1ae60bfabd09c0d241e6966a6800e27a797ce175> and will discuss at <https://github.com/rurema/doctree/issues/2730>
 - Clean up unbundled libraries and old documents
@@ -365,7 +371,6 @@ toolsのファイルがまだ使えるのかどうかはっきりしない、
 
 ## note
 
-中期目標としては、周辺ツールとの連携を進めたいと思っています。
 また、標準添付ではなくなったライブラリのドキュメントも古いまま放置するのではなく、新しいバージョンでは生成されないようにするなどの何らかの対処をしたいと思っています。
 
 # Long term plans
@@ -388,8 +393,7 @@ RDocとは記法だけに限らず、ドキュメントの書き方が違いす�
 - Short term most important plans to increase contributions
   - RD based → Markdown based
   - Improve usage documentation
-- Middle term plans
-  - Improve for users
+- Middle term plans: Improve for users
 - Resolve many historical problems progressively
 - Contribution welcome!
   - Contact us on GitHub or `#rurema` channel of ruby-jp slack
