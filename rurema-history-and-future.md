@@ -170,6 +170,10 @@ bitclust時代にシステムが関わる改善点がいくつかあったので
 - Support new versions of Ruby
 - <https://rurema-review.connpass.com/>
 
+## note
+
+次にプロジェクトの現状の話です。
+
 # Documentation improvement sub-projects
 
 - Add executable sample codes
