@@ -1,0 +1,23 @@
+---
+id: rubykaigi2022-rurema
+base_name: rurema-history-and-future
+tags:
+- ruby
+presentation_date: '2022-09-10'
+presentation_start_time:
+presentation_end_time:
+version: 2022.9.10.0
+licenses: []
+slideshare_id:
+speaker_deck_id:
+vimeo_id:
+youtube_id:
+width: 1920
+height: 1080
+author:
+  markup_language: :markdown
+  name: Kazuhiro NISHIYAMA
+  email: zn@mbf.nifty.com
+  rubygems_user: znz
+  slideshare_user: znzjp
+  speaker_deck_user: znz
