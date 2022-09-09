@@ -18,13 +18,15 @@ allotted-time
 theme
 :   lightning-simple
 
-# self.intro
+# self.introduction
 
 - Kazuhiro NISHIYAMA
 - One of Ruby committers
 - One of owners of <https://github.com/rurema>
+  - Today's topic
 - Ruby Development Inc.
   - one of Silver Sponsors
+  - jimlock (one of TRICK 2022 winner) is my coworker
 - Twitter, GitHub: `@znz`
 
 ## note
@@ -32,16 +34,23 @@ theme
 まずは自己紹介からです。
 Ruby のコミッターの一人です。
 そして今回の話に出てくるるりまOrganizationのowner権限を持っている一人です。
+今回はこれの話です。
 
 現在の所属は株式会社Ruby開発で、今回のRubyKaigi 2022のシルバースポンサーのうちの1社です。
+今回の TRICK2022 の入賞者の1人は弊社所属の人です。
 
 Twitter や GitHub ではゼットエヌゼットというアカウントで活動しています。
 
 # Agenda
 
 - What is rurema?
-- History
-- Future
+- History of Japanese Ruby reference manual
+  - Before rurema
+  - Recent changes
+- Future plans
+  - Short term plans
+  - Medium term plans
+  - Long term plans
 
 ## note
 
@@ -85,13 +94,14 @@ FAQ に
 
 と書いてあって、ネギまという漫画がはやっていた頃から存在しています。
 
-# History of Japanese Ruby reference manual (1/2)
+# Before rurema
 
 - Before Ruby 1.4.6
   - <https://ftp.ruby-lang.org/pub/ruby/doc/>
   - Documents written in *RD*
   - English:  [ruby-man-1.4.6.tar.gz](https://ftp.ruby-lang.org/pub/ruby/doc/ruby-man-1.4.6.tar.gz)
   - Japanese: [ruby-man-1.4.6-jp.tar.gz](https://ftp.ruby-lang.org/pub/ruby/doc/ruby-man-1.4.6-jp.tar.gz)
+    (HTML files encoding is iso-2022-jp)
 - Ruby 1.6 to 1.8 era
   - Edit documents on *RWiki*
   - RWiki is a Wiki using RD + some extensions
@@ -99,9 +109,10 @@ FAQ に
 ## note
 
 現在入手しやすい最古のドキュメントとして、1.4.6時代にRDで書かれたものがこのURLからダウンロードできます。
+中のHTMLファイルのエンコーディングは ISO-2022-JP なので、UTF-8 しか対応していないソフトで開くと文字化けするので気をつけてください。
 このうち、日本語の方を元にして、RWikiというRD記法をベースにして、いくつか拡張された記法を使った Wiki で、しばらくの間、ドキュメントを更新していました。
 
-# History of Japanese Ruby reference manual (2/2)
+# Starting rurema
 
 - In Ruby 1.8 era
   - Started *rurema* (Rubyリファレンスマニュアル刷新計画)
@@ -166,7 +177,7 @@ bitclust時代にシステムが関わる改善点がいくつかあったので
     コピペ可能なサンプルコードを整備する
 - Colorize sample codes
 
-→ stalled
+→ stalled (maybe almost done?)
 
 ## note
 
@@ -206,10 +217,24 @@ bitclust時代にシステムが関わる改善点がいくつかあったので
 
 しかし、だんだん参加者が減ってしまって、現在は Slack での通知が続いているだけで、あまり活動できていません。
 
+# Help wanted
+
+- Help wanted to check current statuses
+- Coordinator is also wanted
+- Contact us on GitHub issues or `#rurema` channel of ruby-jp slack
+  - <https://github.com/rurema/doctree/issues>
+  - <https://ruby-jp.github.io/>x
+
+## note
+
+そういう状況なので、現状を確認して、作業が必要な部分を調整してくれる人がいると助かります。
+
+興味があれば GitHub の issues か ruby-jp slack の「るりま」チャンネルで連絡してください。
+
 # Future plans
 
 - Short term plans
-- Middle term plans
+- Medium term plans
 - Long term plans
 
 ## note
@@ -231,6 +256,36 @@ bitclust時代にシステムが関わる改善点がいくつかあったので
 
 そのために、現在の記法からどう変換するのが良いかを調査中です。
 
+# Current syntax
+
+- `#@` lines are bitclust pre-processors
+- `---` line is MethodList of RD
+
+```
+#@since 3.1
+--- intersect?(other)   -> bool
+
+other と共通の要素が少なくとも1個あれば true を、なければ false を返します。
+
+#@samplecode 例
+a = [ 1, 2, 3 ]
+b = [ 3, 4, 5 ]
+c = [ 5, 6, 7 ]
+a.intersect?(b)   # => true
+a.intersect?(c)   # => false
+#@end
+#@end
+```
+
+## note
+
+現在の記法はこのような感じです。
+
+ハッシュ アットマーク シンス と対応する ハッシュ アットマーク エンド までで、
+このバージョン以降のドキュメントをくくっていて、
+ハイフン3個で始まる行はメソッドリストで、その後にメソッドの説明を書いています。
+
+それから、ハッシュ アットマーク サンプルコードで色付けする実行可能なサンプルコードをくくっています。
 
 # Convert pre-processors
 
@@ -241,7 +296,7 @@ bitclust時代にシステムが関わる改善点がいくつかあったので
 
 ## note
 
-RDベースの記法から変換するときに、bitclust独自のプリプロセッサのバージョン分岐やインクルードなどをどうするのが良いかなどを考えています。
+さきほど見せたようなRDベースの記法から変換するときに、bitclust独自のプリプロセッサのバージョン分岐やインクルードなどをどうするのが良いかなどを考えています。
 
 たとえば、エディターがどういう拡張なら対応していて、編集しやすいかとか、どういう記法なら対応していない環境でも変なことにならないか、ということを気にしています。
 
@@ -266,6 +321,8 @@ RDに存在するメソッドリストがないので、その代わりに何を
 
 - `#@samplecode` → code block
 - links and references → ? (thinking)
+  - link from `[[ref:m17n_prog]]` to `===[a:m17n_prog] M17N プログラミングの基本` in the same file
+  - link from `[[ref:c:GC#tuning_gc]]` to `====[a:tuning_gc] チューニングのための環境変数` in the other file
 
 ## note
 
@@ -276,7 +333,9 @@ RDに存在するメソッドリストがないので、その代わりに何を
 # Other short term plans and problems
 
 - Clean up unused files, old files
+  - ChangeLog, setup.rb, ...
 - Not sure if tools are still usable
+  - tools/bc-checkparams.rb, tools/forall-ruby.rb, ...
 - **Lack of usage documentation**
   - This is most important for contributors
 - Reproducible build
@@ -293,12 +352,16 @@ toolsのファイルがまだ使えるのかどうかはっきりしない、
 
 そして、再現可能なビルドも何らかの手段でもっと進めたいと思っています。
 
-# Middle term plans
+# Medium term plans
 
 - Cooperation with RBS
+  - e.g. Check signatures
 - Cooperation with IRB
+  - Support to show rurema instead of rdoc
 - Executable sample code using WASM
-- Clean up unbundled libraries
+  - hanachin already tried <https://github.com/hanachin/bitclust/commit/1ae60bfabd09c0d241e6966a6800e27a797ce175> and will discuss at <https://github.com/rurema/doctree/issues/2730>
+- Clean up unbundled libraries and old documents
+  - Some documents moved to <https://github.com/rurema/historical-documents>
 
 ## note
 
@@ -329,6 +392,7 @@ RDocとは記法だけに限らず、ドキュメントの書き方が違いす�
   - Improve for users
 - Resolve many historical problems progressively
 - Contribution welcome!
+  - Contact us on GitHub or `#rurema` channel of ruby-jp slack
 
 ## note
 
